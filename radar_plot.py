@@ -13,7 +13,7 @@ URL5 = ('https://raw.githubusercontent.com/google/fonts/main/apache/robotoslab/'
 robotto_bold = FontManager(URL5)
 
 ## Path to excel file created from R
-file = "C:/Users/danil/Desktop/VSCode Projects/CenterbackRadarScript/data_VirgilvanDijk.xlsx"
+file = "C:/~/data_VirgilvanDijk.xlsx"
 
 # Function to create plot and save as JPEG
 def RadarPlot(file):
