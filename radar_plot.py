@@ -1,7 +1,9 @@
 # Packages
 import pandas as pd
+import numpy as np
 from mplsoccer import Radar, FontManager, grid
 import matplotlib.pyplot as plt
+from datetime import date
 from matplotlib import font_manager
 import math
 
@@ -11,7 +13,7 @@ URL5 = ('https://raw.githubusercontent.com/google/fonts/main/apache/robotoslab/'
 robotto_bold = FontManager(URL5)
 
 ## Path to excel file created from R
-file = "C:/~/data_TylerAdams.xlsx"
+file = "C:/Users/danil/Desktop/VSCode Projects/CenterbackRadarScript/data_VirgilvanDijk.xlsx"
 
 # Function to create plot and save as JPEG
 def RadarPlot(file):
@@ -77,10 +79,16 @@ def RadarPlot(file):
     # Player information
     player_name = player_info['Player'][0]
     player_squad = player_info['Squad'][0]
-    player_birthday = player_info['Birthday'][0].date()
-    player_age = math.floor((date.today() - player_birthday).days / 365)
-    player_birthday_str = player_birthday.strftime('%Y-%m-%d')
-    age_string = f'Age: {player_age} ({player_birthday_str})'
+    if np.isnan(player_info['Birthday'][0]):
+        player_birthday = ''
+        age_string = ''
+        player_age = ''
+        player_birthday_str = ''
+    else:
+        player_birthday = player_info['Birthday'][0].date()
+        age_string = f'Age: {player_age} ({player_birthday_str})'
+        player_age = math.floor((date.today() - player_birthday).days / 365)
+        player_birthday_str = player_birthday.strftime('%Y-%m-%d')
     league = player_info['Comp'][0]
     season = player_info['Season_End_Year'][0]
     season_str = f'{season-1}-{season}'
@@ -141,7 +149,7 @@ def RadarPlot(file):
                                 fontproperties=robotto_bold.prop, ha='left', va='center')
     
     # Save image as JPEG
-    plt.savefig(f"{player_name}_Radar.jpeg", format = 'jpeg')
+    #plt.savefig(f"{player_name}_Radar.jpeg", format = 'jpeg')
 
 # Function
 RadarPlot(file)
