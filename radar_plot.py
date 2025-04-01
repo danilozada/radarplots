@@ -48,7 +48,6 @@ def RadarPlot(file):
           'Tackles & Interceptions']
         lower_is_better = ['Fouls']
         radar_position = 'Fullback'
-
     if position == 'Midfielder':
         params = ['Pass Completion %', 'Progressive Carries', "Progressive Passes",
                   'Expected Assisted Goals', 'Completed Final Third Passes', 
@@ -56,9 +55,6 @@ def RadarPlot(file):
                   'Interceptions', 'Tackles', "% of Dribblers Tackled"]
         lower_is_better = ['Fouls']
         radar_position = 'Midfielder'
-
-
-    
     if position == 'Winger/CAM':
         params = ["npxG", "npxG/Shot", "Fouls Drawn", 'Tackles & Interceptions',
           'Expected Assisted Goals', "Passes into Penalty Area", 'Progressive Carries',
@@ -66,7 +62,6 @@ def RadarPlot(file):
           "Shots"]
         lower_is_better = ["Shot Distance (Yards)"]
         radar_position = 'Attacking Midfielder/Winger'
-
     if position == 'Striker':
         params = ["npxG", "Shots", "Shot Distance (Yards)", "Shot Creating Actions",
                   'Expected Assisted Goals', 'Carries into Penalty Area', 
@@ -149,7 +144,7 @@ def RadarPlot(file):
                                 fontproperties=robotto_bold.prop, ha='left', va='center')
     
     # Save image as JPEG
-    #plt.savefig(f"{player_name}_Radar.jpeg", format = 'jpeg')
+    plt.savefig(f"{player_name}_Radar.jpeg", format = 'jpeg')
 
 # Function
 RadarPlot(file)
